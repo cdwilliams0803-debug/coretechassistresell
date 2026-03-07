@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================
+       SECTION 1: BASIC PAGE SETTINGS
+  ========================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Tech Assist Marketplace</title>
+  <meta
+    name="description"
+    content="Browse available tech items from Core Tech Assist Marketplace."
+  >
+
+  <style>
+    /* =========================================
+       SECTION 2: BRAND COLORS
+    ========================================== */
+    :root{
+      --orange:#ff9d00;
+      --black:#0a0a0a;
+      --grey:#1a1a1a;
+      --grey2:#222;
+      --white:#ffffff;
+      --light:#ccc;
+      --muted:#888;
+      --green:#00c853;
+    }
+
+    /* =========================================
+       SECTION 3: GLOBAL STYLES
+    ========================================== */
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--black);
+      color:var(--white);
+      margin:0;
+    }
+
+    /* =========================================
+       SECTION 4: HEADER
+    ========================================== */
+    header{
+      background:var(--grey);
+      padding:25px;
+      text-align:center;
+      border-bottom:3px solid var(--orange);
+    }
+
+    .logo{
+      max-width:220px;
+      margin-bottom:10px;
+    }
+
+    .sub-header{
+      color:var(--orange);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-weight:bold;
+      font-size:1.5rem;
+    }
+
+    /* =========================================
+       SECTION 5: HERO
+    ========================================== */
+    .hero{
+      background:linear-gradient(135deg,#111,#1c1c1c);
+      padding:60px 20px;
+      text-align:center;
+      border-bottom:1px solid #333;
+    }
+
+    .hero h1{
+      font-size:36px;
+      margin-bottom:15px;
+      color:white;
+    }
+
+    .hero p{
+      max-width:600px;
+      margin:auto;
+      color:var(--light);
+      line-height:1.6;
+    }
+
+    /* =========================================
+       SECTION 6: TRUST SECTION
+    ========================================== */
+    .trust{
+      max-width:1100px;
+      margin:50px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .trust-box{
+      background:var(--grey);
+      border:1px solid #333;
+      border-radius:10px;
+      padding:25px;
+      text-align:center;
+    }
+
+    .trust-box h3{
+      color:var(--orange);
+      margin-bottom:10px;
+    }
+
+    .trust-box p{
+      color:var(--light);
+      font-size:14px;
+      line-height:1.6;
+      margin:0;
+    }
+
+    /* =========================================
+       SECTION 7: PURCHASE INFO
+    ========================================== */
+    .notice{
+      background:var(--grey);
+      max-width:900px;
+      margin:40px auto;
+      padding:25px;
+      border-radius:10px;
+      border:1px solid #333;
+      text-align:center;
+    }
+
+    .notice h3{
+      color:var(--orange);
+      margin-bottom:10px;
+    }
+
+    .notice p{
+      color:var(--light);
+      margin:0;
+      line-height:1.8;
+    }
+
+    /* =========================================
+       SECTION 8: PRODUCT TITLE
+    ========================================== */
+    .section-title{
+      text-align:center;
+      margin:40px 20px;
+      font-size:24px;
+      color:var(--orange);
+      font-weight:bold;
+    }
+
+    /* =========================================
+       SECTION 9: PRODUCT GRID
+    ========================================== */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    /* =========================================
+       SECTION 10: PRODUCT CARD
+    ========================================== */
+    .card{
+      background:var(--grey);
+      border:1px solid #333;
+      border-radius:10px;
+      padding:15px;
+      display:flex;
+      flex-direction:column;
+      transition:.3s;
+    }
+
+    .card:hover{
+      border-color:var(--orange);
+      transform:translateY(-5px);
+      box-shadow:0 0 15px rgba(255,157,0,.5);
+    }
+
+    /* =========================================
+       SECTION 11: IMAGE CAROUSEL
+       Every product card below uses this.
+    ========================================== */
+    .carousel{
+      position:relative;
+      height:200px;
+      overflow:hidden;
+      border-radius:6px;
+      margin-bottom:15px;
+      background:#222;
+    }
+
+    .carousel img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:none;
+      cursor:pointer;
+    }
+
+    .carousel img.active{
+      display:block;
+    }
+
+    .carousel button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,.65);
+      color:#fff;
+      border:none;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:20px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .carousel .prev{
+      left:8px;
+    }
+
+    .carousel .next{
+      right:8px;
+    }
+
+    /* =========================================
+       SECTION 12: LIGHTBOX / ZOOM VIEW
+       Clicking an image opens this fullscreen view.
+    ========================================== */
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.92);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .lightbox.active{
+      display:flex;
+    }
+
+    .lightbox img{
+      max-width:95vw;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:8px;
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:16px;
+      right:20px;
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      border:none;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    /* =========================================
+       SECTION 13: STATUS TAGS
+    ========================================== */
+    .tag{
+      background:var(--orange);
+      color:black;
+      font-size:10px;
+      padding:3px 10px;
+      border-radius:3px;
+      font-weight:bold;
+      margin-bottom:5px;
+      width:fit-content;
+      text-transform:uppercase;
+    }
+
+    .tag.new{
+      background:var(--green);
+      color:white;
+    }
+
+    .tag.sold{
+      background:#444;
+      color:#bbb;
+    }
+
+    /* =========================================
+       SECTION 14: PRODUCT TEXT
+    ========================================== */
+    h3{
+      margin:5px 0;
+      color:var(--orange);
+    }
+
+    h4{
+      margin:4px 0 10px;
+      color:var(--light);
+      font-size:14px;
+      font-weight:normal;
+    }
+
+    .price{
+      font-size:22px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+
+    ul{
+      list-style:none;
+      padding:0;
+      margin-bottom:15px;
+      font-size:13px;
+      color:#ccc;
+    }
+
+    li{
+      margin-bottom:4px;
+    }
+
+    li::before{
+      content:"• ";
+      color:var(--orange);
+    }
+
+    /* =========================================
+       SECTION 15: BUTTONS
+    ========================================== */
+    .button-group{
+      display:flex;
+      gap:8px;
+      margin-top:auto;
+    }
+
+    .btn{
+      flex:1;
+      text-align:center;
+      background:var(--orange);
+      color:black;
+      text-decoration:none;
+      padding:12px;
+      font-weight:bold;
+      border-radius:4px;
+      font-size:14px;
+    }
+
+    .btn:hover{
+      background:white;
+    }
+
+    /* =========================================
+       SECTION 16: CONTACT FORM
+    ========================================== */
+    .contact-section{
+      max-width:700px;
+      margin:40px auto;
+      padding:0 20px;
+    }
+
+    .form-card{
+      background:var(--grey);
+      border:1px solid #333;
+      border-radius:10px;
+      padding:20px;
+    }
+
+    .form-card h2{
+      margin-top:0;
+      color:var(--orange);
+    }
+
+    .form-card p{
+      color:var(--light);
+      line-height:1.6;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:12px;
+      margin-top:8px;
+      border-radius:4px;
+      border:1px solid #333;
+      background:var(--grey2);
+      color:white;
+      font-family:inherit;
+      font-size:14px;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .btn-submit{
+      background:var(--orange);
+      border:none;
+      padding:12px;
+      margin-top:10px;
+      font-weight:bold;
+      cursor:pointer;
+      border-radius:4px;
+      font-size:14px;
+    }
+
+    .btn-submit:hover{
+      background:white;
+    }
+
+    /* =========================================
+       SECTION 17: FOOTER
+    ========================================== */
+    footer{
+      background:var(--grey);
+      margin-top:40px;
+      padding:40px;
+      text-align:center;
+      font-size:.9rem;
+      color:#bbb;
+      line-height:1.8;
+    }
+
+    .footer-accent{
+      color:var(--orange);
+      font-weight:bold;
+    }
+
+    /* =========================================
+       SECTION 18: MOBILE
+    ========================================== */
+    @media (max-width:640px){
+      .button-group{
+        flex-direction:column;
+      }
+
+      .hero h1{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       SECTION 19: HEADER
+  ========================================== -->
+  <header>
+    <img
+      src="https://i.postimg.cc/CKMHbgmD/33a60556_f477_4da1_a492_a7239339ab14.png"
+      class="logo"
+      alt="Core Tech Assist logo"
+    >
+    <div class="sub-header">Core Tech Assist Marketplace</div>
+  </header>
+
+  <!-- =========================================
+       SECTION 20: HERO
+  ========================================== -->
+  <section class="hero">
+    <h1>Affordable Tech. Reliable Hardware.</h1>
+    <p>
+      Browse available refurbished computers, laptops, and tech hardware from Core Tech Assist.
+      All items tested and ready to go.
+    </p>
+  </section>
+
+  <!-- =========================================
+       SECTION 21: TRUST
+  ========================================== -->
+  <section class="trust">
+    <div class="trust-box">
+      <h3>Tested Hardware</h3>
+      <p>Every device is tested to ensure it works properly before being listed.</p>
+    </div>
+
+    <div class="trust-box">
+      <h3>Local Tech Support</h3>
+      <p>Unlike big marketplaces, you can reach a real technician if you need help.</p>
+    </div>
+
+    <div class="trust-box">
+      <h3>Honest Pricing</h3>
+      <p>No inflated prices. Just fair deals on reliable tech.</p>
+    </div>
+
+    <div class="trust-box">
+      <h3>Trusted Business</h3>
+      <p>Operated by Core Tech Assist — professional IT support in your community.</p>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 22: PURCHASE NOTICE
+  ========================================== -->
+  <section class="notice">
+    <h3>Purchase Information</h3>
+    <p>
+      Local pickup available and preferred.<br>
+      Shipping available | 3% Processing Fee on all devices brought online<br>
+      All hardware tested and fully functional.
+    </p>
+  </section>
+
+  <!-- =========================================
+       SECTION 23: PRODUCT TITLE
+  ========================================== -->
+  <div class="section-title">Available Items</div>
+
+  <!-- =========================================
+       SECTION 24: PRODUCT GRID
+       HOW TO EDIT IMAGES LATER:
+       Replace image file names inside each carousel.
+       Keep the first image with class="active".
+  ========================================== -->
+  <div class="grid">
+
+    <!-- PRODUCT 1 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/ltp-002-1.jpg" alt="Lenovo Chromebook 100e front view" class="active">
+        <img src="images/ltp-002-2.jpg" alt="Lenovo Chromebook 100e side view">
+        <img src="images/ltp-002-3.jpg" alt="Lenovo Chromebook 100e back view">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Lenovo Chromebook 100e 1st Generation | Charger not Included</h3>
+      <h4>Condition - Good | Qty: 1</h4>
+      <div class="price">$50.00</div>
+      <ul>
+        <li>4 GB RAM | 64GB eMMC Storage</li>
+        <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
+        <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
+        <li>11.6 HD Display | Takes USB C 45W Charger</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-002" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 2 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 2 image 2">
+        <img src="images/placeholder.jpg" alt="Product 2 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Lenovo Chromebook 100e 1st Generation | Charger not Included</h3>
+      <h4>Condition - Fair | Qty: 1</h4>
+      <div class="price">$40.00</div>
+      <ul>
+        <li>4 GB RAM | 64GB eMMC Storage</li>
+        <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
+        <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
+        <li>11.6 HD Display | Takes USB C 45W Charger</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-001" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 3 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 3 image 2">
+        <img src="images/placeholder.jpg" alt="Product 3 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Lenovo Chromebook 100e 2nd Gen | Charger not Included</h3>
+      <h4>Condition - Good | Qty: 1</h4>
+      <div class="price">$60.00</div>
+      <ul>
+        <li>4 GB LPDDR4 RAM | 64GB eMMC Storage</li>
+        <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
+        <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
+        <li>11.6 HD Display | Takes USB C 45W Charger</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-005" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%202nd%20Gen%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 4 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 4 image 2">
+        <img src="images/placeholder.jpg" alt="Product 4 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Lenovo Chromebook 100e Generation 2 | Charger not Included</h3>
+      <h4>Condition - Poor but Fully Functional | Qty: 1</h4>
+      <div class="price">$35.00</div>
+      <ul>
+        <li>4 GB LPDDR4 RAM | 64GB eMMC Storage</li>
+        <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
+        <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
+        <li>11.6 HD Display | Takes USB C 45W Charger</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-004" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%20Generation%202%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 5 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 5 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 5 image 2">
+        <img src="images/placeholder.jpg" alt="Product 5 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Rhino T8-2020 | Charger not Included</h3>
+      <h4>Condition - Good | Qty: 2</h4>
+      <div class="price">$30.00</div>
+      <ul>
+        <li>2GB/3GB RAM | 32 GB</li>
+        <li>Android 10 | Global LTE Wifi</li>
+        <li>8in Display | MicroSD | Nano Sim</li>
+        <li>Takes USB C Charger</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/TAB-001" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Rhino%20T8-2020%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 6 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 6 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 6 image 2">
+        <img src="images/placeholder.jpg" alt="Product 6 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Google Pixel Watch Generation 1 | Charger Included</h3>
+      <h4>Condition - Good | Qty: 1</h4>
+      <div class="price">$35.00</div>
+      <ul>
+        <li>2 GB SDRAM | 32 GB eMMC flash storage</li>
+        <li>Samsung Exynos 9110 SoC paired with a Cortex M33 co-processor</li>
+        <li>41mm diameter | 12.3mm thick</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-001" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Google%20Pixel%20Watch%20Generation%201%20%7C%20Charger%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 7 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 7 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 7 image 2">
+        <img src="images/placeholder.jpg" alt="Product 7 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag new">New</span>
+      <h3>Smart Audio Sunglasses Hyundai HY-C2 | Charger Included</h3>
+      <h4>Condition - New | Qty: 1</h4>
+      <div class="price">$50.00</div>
+      <ul>
+        <li>Bluetooth 5.4</li>
+        <li>AI Translation</li>
+        <li>AI Integration</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-002" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Smart%20Audio%20Sunglasses%20Hyundai%20HY-C2%20%7C%20Charger%20Included" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 8 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 8 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 8 image 2">
+        <img src="images/placeholder.jpg" alt="Product 8 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Product Name 8</h3>
+      <h4>Condition - Add Here | Qty: 1</h4>
+      <div class="price">$0.00</div>
+      <ul>
+        <li>Spec 1</li>
+        <li>Spec 2</li>
+        <li>Spec 3</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%208" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 9 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 9 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 9 image 2">
+        <img src="images/placeholder.jpg" alt="Product 9 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Product Name 9</h3>
+      <h4>Condition - Add Here | Qty: 1</h4>
+      <div class="price">$0.00</div>
+      <ul>
+        <li>Spec 1</li>
+        <li>Spec 2</li>
+        <li>Spec 3</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%209" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 10 -->
+    <div class="card">
+      <div class="carousel">
+        <img src="images/placeholder.jpg" alt="Product 10 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 10 image 2">
+        <img src="images/placeholder.jpg" alt="Product 10 image 3">
+        <button class="prev" type="button">&#8249;</button>
+        <button class="next" type="button">&#8250;</button>
+      </div>
+      <span class="tag">In Stock</span>
+      <h3>Product Name 10</h3>
+      <h4>Condition - Add Here | Qty: 1</h4>
+      <div class="price">$0.00</div>
+      <ul>
+        <li>Spec 1</li>
+        <li>Spec 2</li>
+        <li>Spec 3</li>
+      </ul>
+      <div class="button-group">
+        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
+        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%2010" class="btn">Message to Buy</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =========================================
+       SECTION 25: CONTACT FORM
+  ========================================== -->
+  <section class="contact-section">
+    <div class="form-card">
+      <h2>Purchase Inquiry</h2>
+      <p>Ask about an item or request to purchase.</p>
+
+      <form action="https://formspree.io/f/xeeeqkew" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="item" placeholder="Item Name">
+        <textarea name="message" placeholder="Your message"></textarea>
+        <button class="btn-submit" type="submit">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 26: FOOTER
+  ========================================== -->
+  <footer>
+    Ryan | Founder & IT Professional<br>
+    <span class="footer-accent">Core Tech Assist</span><br>
+    (405) 474-3759 | ctechassist.org<br>
+    Mon-Fri 8:00 AM – 4:00 PM<br>
+    After-hours emergency service available<br>
+    Proudly LGBTQ+ Friendly | Black & Trans Owned Business<br>
+    AS & BS in Information Technology
+  </footer>
+
+  <!-- =========================================
+       SECTION 27: CAROUSEL SCRIPT
+  ========================================== -->
+  <script>
+    document.querySelectorAll(".carousel").forEach(function(carousel){
+      const images = carousel.querySelectorAll("img");
+      const prev = carousel.querySelector(".prev");
+      const next = carousel.querySelector(".next");
+
+      if (!images.length || !prev || !next) return;
+
+      let currentIndex = 0;
+
+      function showImage(index){
+        images.forEach(function(img, i){
+          img.classList.toggle("active", i === index);
+        });
+      }
+
+      prev.addEventListener("click", function(){
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+
+      next.addEventListener("click", function(){
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      images.forEach(function(img){
+        img.addEventListener("click", function(){
+          openLightbox(img.src, img.alt);
+        });
+      });
+
+      showImage(currentIndex);
+    });
+
+    function openLightbox(src, alt){
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightbox-image");
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || "Expanded product image";
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox(){
+      const lightbox = document.getElementById("lightbox");
+      lightbox.classList.remove("active");
+    }
+
+    document.addEventListener("keydown", function(event){
+      if (event.key === "Escape"){
+        closeLightbox();
+      }
+    });
+  </script>
+
+  <!-- =========================================
+       SECTION 28: LIGHTBOX HTML
+  ========================================== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" type="button" onclick="closeLightbox(); event.stopPropagation();">&times;</button>
+    <img id="lightbox-image" src="" alt="Expanded product image">
+  </div>
+
+</body>
+</html>
