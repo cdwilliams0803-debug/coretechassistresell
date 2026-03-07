@@ -36,19 +36,33 @@
       box-sizing:border-box;
     }
 
-    /* 1. THE CARBON FIBER BACKGROUND */
     body{
       font-family:'Inter', sans-serif;
-      background-color:#0f0f0f;
+      background-color:#050505;
       background-image:
-        linear-gradient(45deg, #141414 25%, transparent 25%),
-        linear-gradient(-45deg, #141414 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #141414 75%),
-        linear-gradient(-45deg, transparent 75%, #141414 75%);
-      background-size:10px 10px;
-      background-position:0 0, 0 5px, 5px 5px, 5px 0;
+        linear-gradient(115deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(255,255,255,0.03) 100%),
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+        linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+        linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+      background-size:100% 100%, 14px 14px;
+      background-position:0 0, 0 0, 0 7px, 7px 7px, 7px 0;
+      background-attachment:fixed;
       margin:0;
       color:#ffffff;
+      position:relative;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
+      pointer-events:none;
+      z-index:-1;
     }
 
     h1, h2, h3, .sub-header, .section-title{
@@ -62,10 +76,11 @@
        SECTION 4: HEADER
     ========================================== */
     header{
-      background:var(--grey);
+      background:rgba(26,26,26,0.92);
       padding:25px;
       text-align:center;
       border-bottom:3px solid var(--orange);
+      backdrop-filter:blur(8px);
     }
 
     .logo{
@@ -83,10 +98,11 @@
        SECTION 5: HERO
     ========================================== */
     .hero{
-      background:linear-gradient(135deg,#111,#1c1c1c);
+      background:linear-gradient(135deg, rgba(17,17,17,0.92), rgba(28,28,28,0.92));
       padding:60px 20px;
       text-align:center;
       border-bottom:1px solid #333;
+      backdrop-filter:blur(8px);
     }
 
     .hero h1{
@@ -115,12 +131,13 @@
     }
 
     .trust-box{
-      background:var(--grey);
-      border:1px solid #333;
+      background:rgba(25,25,25,0.9);
+      border:1px solid #3d3d3d;
       border-radius:10px;
       padding:25px;
       text-align:center;
-      box-shadow:0 10px 20px rgba(0,0,0,0.35);
+      backdrop-filter:blur(10px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
     }
 
     .trust-box h3{
@@ -139,14 +156,15 @@
        SECTION 7: PURCHASE INFO
     ========================================== */
     .notice{
-      background:var(--grey);
+      background:rgba(25,25,25,0.9);
       max-width:900px;
       margin:40px auto;
       padding:25px;
       border-radius:10px;
-      border:1px solid #333;
+      border:1px solid #3d3d3d;
       text-align:center;
-      box-shadow:0 10px 20px rgba(0,0,0,0.35);
+      backdrop-filter:blur(10px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
     }
 
     .notice h3{
@@ -194,15 +212,15 @@
     /* =========================================
        SECTION 10: PRODUCT CARD
     ========================================== */
-    /* 2. THE SOLID MACHINED CARDS */
     .card{
-      background:#1a1a1a;
-      border:1px solid #333;
+      background:rgba(25,25,25,0.9);
+      border:1px solid #3d3d3d;
       border-radius:4px;
       padding:20px;
       display:flex;
       flex-direction:column;
-      box-shadow:0 10px 20px rgba(0,0,0,0.5);
+      backdrop-filter:blur(10px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.8);
       transition:transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
     }
 
@@ -423,11 +441,12 @@
     }
 
     .form-card{
-      background:var(--grey);
-      border:1px solid #333;
+      background:rgba(25,25,25,0.9);
+      border:1px solid #3d3d3d;
       border-radius:10px;
       padding:20px;
-      box-shadow:0 10px 20px rgba(0,0,0,0.35);
+      backdrop-filter:blur(10px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
     }
 
     .form-card h2{
@@ -476,13 +495,14 @@
        SECTION 17: FOOTER
     ========================================== */
     footer{
-      background:var(--grey);
+      background:rgba(26,26,26,0.92);
       margin-top:40px;
       padding:40px;
       text-align:center;
       font-size:.9rem;
       color:#bbb;
       line-height:1.8;
+      backdrop-filter:blur(8px);
     }
 
     .footer-accent{
@@ -555,7 +575,7 @@
   </section>
 
   <!-- =========================================
-       SECTION 22: PURCHASE NOTICE
+       SECTION 22: PURCHASE INFO
   ========================================== -->
   <section class="notice">
     <h3>Pickup & Payment Details</h3>
@@ -739,7 +759,7 @@
         <button class="prev" type="button">&#8249;</button>
         <button class="next" type="button">&#8250;</button>
       </div>
-      <span class="tag new">New</span>
+      <span class="tag">In Stock</span>
       <h3>Smart Audio Sunglasses Hyundai HY-C2 | Charger Included</h3>
       <h4>Condition - New | Qty: 1</h4>
       <div class="price">$50.00</div>
@@ -930,16 +950,16 @@
   ========================================== -->
   <script>
     const myInventory = {
-      "product-1": "sold",
-      "product-2": "in-stock",
-      "product-3": "sold-out",
+      "product-1": "in-stock",
+      "product-2": "sold",
+      "product-3": "in-stock",
       "product-4": "in-stock",
       "product-5": "in-stock",
       "product-6": "in-stock",
       "product-7": "in-stock",
       "product-8": "in-stock",
       "product-9": "in-stock",
-      "product-10": "sold-out"
+      "product-10": "in-stock"
     };
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -980,13 +1000,8 @@
             }
           });
         }
-
-        if (status === "in-stock" && tag.classList.contains("new")) {
-          tag.textContent = "New";
-        }
       });
 
-      // This tells the user the inventory is fresh as of today with time
       const now = new Date();
       const updateDateTime = now.toLocaleString("en-US", {
         month: "long",
