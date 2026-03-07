@@ -12,6 +12,8 @@
     content="Browse available tech items from Core Tech Assist Marketplace."
   >
 
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     /* =========================================
        SECTION 2: BRAND COLORS
@@ -34,11 +36,26 @@
       box-sizing:border-box;
     }
 
+    /* 1. THE CARBON FIBER BACKGROUND */
     body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--black);
-      color:var(--white);
+      font-family:'Inter', sans-serif;
+      background-color:#0f0f0f;
+      background-image:
+        linear-gradient(45deg, #141414 25%, transparent 25%),
+        linear-gradient(-45deg, #141414 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #141414 75%),
+        linear-gradient(-45deg, transparent 75%, #141414 75%);
+      background-size:10px 10px;
+      background-position:0 0, 0 5px, 5px 5px, 5px 0;
       margin:0;
+      color:#ffffff;
+    }
+
+    h1, h2, h3, .sub-header, .section-title{
+      font-family:'Oswald', sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-weight:700;
     }
 
     /* =========================================
@@ -58,10 +75,8 @@
 
     .sub-header{
       color:var(--orange);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-weight:bold;
-      font-size:1.5rem;
+      font-size:1.8rem;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.5);
     }
 
     /* =========================================
@@ -105,6 +120,7 @@
       border-radius:10px;
       padding:25px;
       text-align:center;
+      box-shadow:0 10px 20px rgba(0,0,0,0.35);
     }
 
     .trust-box h3{
@@ -130,6 +146,7 @@
       border-radius:10px;
       border:1px solid #333;
       text-align:center;
+      box-shadow:0 10px 20px rgba(0,0,0,0.35);
     }
 
     .notice h3{
@@ -154,6 +171,14 @@
       font-weight:bold;
     }
 
+    #update-timer{
+      text-align:center;
+      color:#888;
+      font-size:12px;
+      margin-top:-30px;
+      margin-bottom:30px;
+    }
+
     /* =========================================
        SECTION 9: PRODUCT GRID
     ========================================== */
@@ -169,25 +194,25 @@
     /* =========================================
        SECTION 10: PRODUCT CARD
     ========================================== */
+    /* 2. THE SOLID MACHINED CARDS */
     .card{
-      background:var(--grey);
+      background:#1a1a1a;
       border:1px solid #333;
-      border-radius:10px;
-      padding:15px;
+      border-radius:4px;
+      padding:20px;
       display:flex;
       flex-direction:column;
-      transition:.3s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.5);
+      transition:transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
     }
 
     .card:hover{
-      border-color:var(--orange);
+      border-color:#ff9d00;
       transform:translateY(-5px);
-      box-shadow:0 0 15px rgba(255,157,0,.5);
     }
 
     /* =========================================
        SECTION 11: IMAGE CAROUSEL
-       Every product card below uses this.
     ========================================== */
     .carousel{
       position:relative;
@@ -239,7 +264,6 @@
 
     /* =========================================
        SECTION 12: LIGHTBOX / ZOOM VIEW
-       Clicking an image opens this fullscreen view.
     ========================================== */
     .lightbox{
       display:none;
@@ -298,8 +322,9 @@
     }
 
     .tag.sold{
-      background:#444;
-      color:#bbb;
+      background:#333 !important;
+      color:#999 !important;
+      border:1px solid #444;
     }
 
     /* =========================================
@@ -310,6 +335,13 @@
       color:var(--orange);
     }
 
+    .card h3{
+      font-size:1.3rem;
+      line-height:1.2;
+      margin-top:10px;
+      color:var(--white);
+    }
+
     h4{
       margin:4px 0 10px;
       color:var(--light);
@@ -318,7 +350,9 @@
     }
 
     .price{
-      font-size:22px;
+      font-family:'Oswald', sans-serif;
+      color:var(--orange);
+      font-size:26px;
       font-weight:bold;
       margin-bottom:10px;
     }
@@ -359,10 +393,24 @@
       font-weight:bold;
       border-radius:4px;
       font-size:14px;
+      border:1px solid transparent;
     }
 
     .btn:hover{
       background:white;
+    }
+
+    .btn.disabled{
+      background:#222 !important;
+      color:#666 !important;
+      pointer-events:none;
+      border:1px solid #333;
+    }
+
+    .btn.disabled:hover{
+      background:#222 !important;
+      color:#666 !important;
+      border:1px solid #333;
     }
 
     /* =========================================
@@ -379,6 +427,7 @@
       border:1px solid #333;
       border-radius:10px;
       padding:20px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.35);
     }
 
     .form-card h2{
@@ -467,17 +516,16 @@
       class="logo"
       alt="Core Tech Assist logo"
     >
-    <div class="sub-header">Core Tech Assist Marketplace</div>
+    <div class="sub-header">Core Tech Marketplace</div>
   </header>
 
   <!-- =========================================
        SECTION 20: HERO
   ========================================== -->
   <section class="hero">
-    <h1>Affordable Tech. Reliable Hardware.</h1>
+    <h1>Quality Refurbished Tech. Expertly Tested.</h1>
     <p>
-      Browse available refurbished computers, laptops, and tech hardware from Core Tech Assist.
-      All items tested and ready to go.
+      Explore the Core Tech Marketplace for reliable computers, laptops, and hardware. Every device is professionally inspected and ready for immediate local pickup.
     </p>
   </section>
 
@@ -502,7 +550,7 @@
 
     <div class="trust-box">
       <h3>Trusted Business</h3>
-      <p>Operated by Core Tech Assist — professional IT support in your community.</p>
+      <p>Operated by Core Tech Assist, professional IT support in your community.</p>
     </div>
   </section>
 
@@ -510,10 +558,12 @@
        SECTION 22: PURCHASE NOTICE
   ========================================== -->
   <section class="notice">
-    <h3>Purchase Information</h3>
+    <h3>Pickup & Payment Details</h3>
     <p>
-      Local pickup available and preferred.<br>
-      Shipping available | 3% Processing Fee on all devices brought online<br>
+      Local Pickup Only: All items are available for local pickup in Oklahoma City.<br>
+      <br>Secure Online Checkout: You can pre-pay via the "Buy Now" links to reserve your item. | Please note: All online transactions include a 3% processing fee.<br>
+      <br>Cash or Cash App: These are our preferred methods for local pickup (No extra fees).<br>
+      <br>Next Steps: After paying online, please message us to schedule your pickup time!<br>
       All hardware tested and fully functional.
     </p>
   </section>
@@ -522,17 +572,17 @@
        SECTION 23: PRODUCT TITLE
   ========================================== -->
   <div class="section-title">Available Items</div>
+  <p id="update-timer">
+    Inventory Last Updated: <span id="last-update-date">Loading...</span>
+  </p>
 
   <!-- =========================================
        SECTION 24: PRODUCT GRID
-       HOW TO EDIT IMAGES LATER:
-       Replace image file names inside each carousel.
-       Keep the first image with class="active".
   ========================================== -->
   <div class="grid">
 
     <!-- PRODUCT 1 -->
-    <div class="card">
+    <div class="card" id="product-1">
       <div class="carousel">
         <img src="images/ltp-002-1.jpg" alt="Lenovo Chromebook 100e front view" class="active">
         <img src="images/ltp-002-2.jpg" alt="Lenovo Chromebook 100e side view">
@@ -557,7 +607,7 @@
     </div>
 
     <!-- PRODUCT 2 -->
-    <div class="card">
+    <div class="card" id="product-2">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 2 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 2 image 2">
@@ -582,7 +632,7 @@
     </div>
 
     <!-- PRODUCT 3 -->
-    <div class="card">
+    <div class="card" id="product-3">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 3 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 3 image 2">
@@ -607,7 +657,7 @@
     </div>
 
     <!-- PRODUCT 4 -->
-    <div class="card">
+    <div class="card" id="product-4">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 4 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 4 image 2">
@@ -632,7 +682,7 @@
     </div>
 
     <!-- PRODUCT 5 -->
-    <div class="card">
+    <div class="card" id="product-5">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 5 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 5 image 2">
@@ -657,7 +707,7 @@
     </div>
 
     <!-- PRODUCT 6 -->
-    <div class="card">
+    <div class="card" id="product-6">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 6 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 6 image 2">
@@ -681,7 +731,7 @@
     </div>
 
     <!-- PRODUCT 7 -->
-    <div class="card">
+    <div class="card" id="product-7">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 7 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 7 image 2">
@@ -705,7 +755,7 @@
     </div>
 
     <!-- PRODUCT 8 -->
-    <div class="card">
+    <div class="card" id="product-8">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 8 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 8 image 2">
@@ -729,7 +779,7 @@
     </div>
 
     <!-- PRODUCT 9 -->
-    <div class="card">
+    <div class="card" id="product-9">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 9 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 9 image 2">
@@ -753,7 +803,7 @@
     </div>
 
     <!-- PRODUCT 10 -->
-    <div class="card">
+    <div class="card" id="product-10">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 10 image 1" class="active">
         <img src="images/placeholder.jpg" alt="Product 10 image 2">
@@ -784,7 +834,7 @@
   <section class="contact-section">
     <div class="form-card">
       <h2>Purchase Inquiry</h2>
-      <p>Ask about an item or request to purchase.</p>
+      <p>Ask about an item.</p>
 
       <form action="https://formspree.io/f/xeeeqkew" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
@@ -800,17 +850,25 @@
        SECTION 26: FOOTER
   ========================================== -->
   <footer>
-    Ryan | Founder & IT Professional<br>
+    Ryan Elijah Williams-Gutierrez | Founder & IT Professional<br>
     <span class="footer-accent">Core Tech Assist</span><br>
-    (405) 474-3759 | ctechassist.org<br>
-    Mon-Fri 8:00 AM – 4:00 PM<br>
-    After-hours emergency service available<br>
+    support@ctechassist.org | ctechassist.org<br>
+    8 AM - 10 PM - 7 Days a Week<br>
+    <br>
     Proudly LGBTQ+ Friendly | Black & Trans Owned Business<br>
     AS & BS in Information Technology
   </footer>
 
   <!-- =========================================
-       SECTION 27: CAROUSEL SCRIPT
+       SECTION 27: LIGHTBOX HTML
+  ========================================== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" type="button" onclick="closeLightbox(); event.stopPropagation();">&times;</button>
+    <img id="lightbox-image" src="" alt="Expanded product image">
+  </div>
+
+  <!-- =========================================
+       SECTION 28: CAROUSEL + LIGHTBOX SCRIPT
   ========================================== -->
   <script>
     document.querySelectorAll(".carousel").forEach(function(carousel){
@@ -868,12 +926,79 @@
   </script>
 
   <!-- =========================================
-       SECTION 28: LIGHTBOX HTML
+       SECTION 29: MASTER INVENTORY LIST
   ========================================== -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" type="button" onclick="closeLightbox(); event.stopPropagation();">&times;</button>
-    <img id="lightbox-image" src="" alt="Expanded product image">
-  </div>
+  <script>
+    const myInventory = {
+      "product-1": "sold",
+      "product-2": "in-stock",
+      "product-3": "sold-out",
+      "product-4": "in-stock",
+      "product-5": "in-stock",
+      "product-6": "in-stock",
+      "product-7": "in-stock",
+      "product-8": "in-stock",
+      "product-9": "in-stock",
+      "product-10": "sold-out"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      Object.keys(myInventory).forEach(id => {
+        const card = document.getElementById(id);
+        if (!card) return;
+
+        const status = myInventory[id];
+        const tag = card.querySelector(".tag");
+        const buttons = card.querySelectorAll(".btn");
+
+        if (!tag) return;
+
+        card.style.opacity = "1";
+
+        if (status === "sold" || status === "sold-out") {
+          tag.className = "tag sold";
+          tag.textContent = status === "sold" ? "Sold" : "Sold Out";
+
+          buttons.forEach((btn) => {
+            btn.classList.add("disabled");
+            btn.href = "#";
+            btn.textContent = "Unavailable";
+          });
+
+          card.style.opacity = "0.7";
+        } else {
+          tag.className = "tag";
+          tag.textContent = "In Stock";
+
+          buttons.forEach((btn, index) => {
+            btn.classList.remove("disabled");
+
+            if (index === 0) {
+              btn.textContent = "Buy Now";
+            } else {
+              btn.textContent = "Message to Buy";
+            }
+          });
+        }
+
+        if (status === "in-stock" && tag.classList.contains("new")) {
+          tag.textContent = "New";
+        }
+      });
+
+      // This tells the user the inventory is fresh as of today with time
+      const now = new Date();
+      const updateDateTime = now.toLocaleString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+      });
+
+      document.getElementById("last-update-date").textContent = updateDateTime;
+    });
+  </script>
 
 </body>
 </html>
