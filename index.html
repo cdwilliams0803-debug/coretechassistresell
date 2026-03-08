@@ -19,6 +19,7 @@
       --muted:#888;
       --green:#00c853;
       --card-bg:rgba(20,20,20,0.9);
+      --tech-grey:#cbd5e1;
     }
 
     *{
@@ -167,6 +168,45 @@
       color:var(--white);
       margin:0;
       line-height:1.8;
+    }
+
+    .condition-advisory{
+      max-width:1200px;
+      margin:40px auto;
+      padding:20px;
+      background:rgba(255,157,0,0.03);
+      border:1px solid rgba(255,157,0,0.2);
+      border-left:4px solid var(--orange);
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .advisory-icon{
+      font-size:24px;
+      color:var(--orange);
+      animation:pulse-warning 2s infinite;
+      flex-shrink:0;
+    }
+
+    @keyframes pulse-warning{
+      0%{ opacity:1; }
+      50%{ opacity:0.4; }
+      100%{ opacity:1; }
+    }
+
+    .advisory-text{
+      font-family:'Inter', sans-serif;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--tech-grey);
+    }
+
+    .advisory-text strong{
+      color:var(--orange);
+      font-family:'Oswald', sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
     }
 
     .section-title{
@@ -652,6 +692,11 @@
       .terminal-body{
         padding:24px;
       }
+
+      .condition-advisory{
+        flex-direction:column;
+        align-items:flex-start;
+      }
     }
   </style>
 </head>
@@ -698,6 +743,16 @@
     </p>
   </section>
 
+  <div class="condition-advisory">
+    <div class="advisory-icon">⚠️</div>
+    <div class="advisory-text">
+      <strong>Hardware Condition Advisory:</strong>
+      All inventory consists of professionally refurbished and used equipment. Please expect
+      normal wear and tear and minor cosmetic imperfections. Every unit is
+      <strong>fully functional and 100% stress-tested</strong> by our technicians prior to listing.
+    </div>
+  </div>
+
   <div class="section-title">Available Items</div>
   <p id="update-timer">
     Inventory Last Updated: <span id="last-update-date">Loading...</span>
@@ -708,7 +763,7 @@
     <div class="card" id="product-1">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/6QZyJ7v6/prodcutcard1.png alt="Lenovo Chromebook 100e multi-view collage" class="fit-contain">
+        <img src="https://i.postimg.cc/6QZyJ7v6/prodcutcard1.png" alt="Lenovo Chromebook 100e multi-view collage" class="fit-contain">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -732,7 +787,7 @@
     <div class="card" id="product-2">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/HnsN1gRb/productcard2.png alt="Lenovo Chromebook 100e fair condition multi-view collage">
+        <img src="https://i.postimg.cc/HnsN1gRb/productcard2.png" alt="Lenovo Chromebook 100e fair condition multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -756,7 +811,7 @@
     <div class="card" id="product-3">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/9FBdKkjx/prodcutcard3.png alt="Lenovo Chromebook 100e 2nd Gen multi-view collage">
+        <img src="https://i.postimg.cc/9FBdKkjx/prodcutcard3.png" alt="Lenovo Chromebook 100e 2nd Gen multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -780,7 +835,7 @@
     <div class="card" id="product-4">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/m2NrwfGR/prodcut4.png alt="Lenovo Chromebook 100e Generation 2 multi-view collage">
+        <img src="https://i.postimg.cc/m2NrwfGR/prodcut4.png" alt="Lenovo Chromebook 100e Generation 2 multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -804,7 +859,7 @@
     <div class="card" id="product-5">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/fb07kT6v/prodcut5.png alt="Rhino T8-2020 multi-view collage">
+        <img src="https://i.postimg.cc/fb07kT6v/prodcut5.png" alt="Rhino T8-2020 multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Android 10</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">2GB / 32GB</span></div>
@@ -828,7 +883,7 @@
     <div class="card" id="product-6">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/qvKXv7f4/product6.png alt="Google Pixel Watch multi-view collage">
+        <img src="https://i.postimg.cc/qvKXv7f4/product6.png" alt="Google Pixel Watch multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Chip</span><span class="spec-val">Exynos 9110</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">2GB / 32GB</span></div>
@@ -852,7 +907,7 @@
     <div class="card" id="product-7">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/d1FLjqS6/product7.png alt="Smart Audio Sunglasses multi-view collage">
+        <img src="https://i.postimg.cc/d1FLjqS6/product7.png" alt="Smart Audio Sunglasses multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Bluetooth</span><span class="spec-val">5.4</span></div>
           <div class="spec-row"><span class="spec-lbl">Features</span><span class="spec-val">AI Translation</span></div>
@@ -876,7 +931,7 @@
     <div class="card" id="product-8">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/Y9wHKq53/a8e2350c-ae09-4458-9679-2fcadab91080.png alt="Product 8 multi-view collage">
+        <img src="images/product-8-collage.jpg" alt="Product 8 multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -900,7 +955,7 @@
     <div class="card" id="product-9">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/Y9wHKq53/a8e2350c-ae09-4458-9679-2fcadab91080.png alt="Product 9 multi-view collage">
+        <img src="images/product-9-collage.jpg" alt="Product 9 multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -924,7 +979,7 @@
     <div class="card" id="product-10">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src=https://i.postimg.cc/Y9wHKq53/a8e2350c-ae09-4458-9679-2fcadab91080.png alt="Product 10 multi-view collage">
+        <img src="images/product-10-collage.jpg" alt="Product 10 multi-view collage">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
