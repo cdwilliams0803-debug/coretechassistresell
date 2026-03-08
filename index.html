@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================
-       SECTION 1: BASIC PAGE SETTINGS
-  ========================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Tech Assist Marketplace</title>
-  <meta
-    name="description"
-    content="Browse available tech items from Core Tech Assist Marketplace."
-  >
+  <meta name="description" content="Browse available tech items from Core Tech Assist Marketplace.">
 
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================
-       SECTION 2: BRAND COLORS
-    ========================================== */
     :root{
       --orange:#ff9d00;
       --black:#0a0a0a;
@@ -29,9 +20,6 @@
       --green:#00c853;
     }
 
-    /* =========================================
-       SECTION 3: GLOBAL STYLES
-    ========================================== */
     *{
       box-sizing:border-box;
     }
@@ -72,9 +60,6 @@
       font-weight:700;
     }
 
-    /* =========================================
-       SECTION 4: HEADER
-    ========================================== */
     header{
       background:rgba(26,26,26,0.92);
       padding:25px;
@@ -94,9 +79,6 @@
       text-shadow:2px 2px 4px rgba(0,0,0,0.5);
     }
 
-    /* =========================================
-       SECTION 5: HERO
-    ========================================== */
     .hero{
       background:linear-gradient(135deg, rgba(17,17,17,0.92), rgba(28,28,28,0.92));
       padding:60px 20px;
@@ -118,9 +100,6 @@
       line-height:1.6;
     }
 
-    /* =========================================
-       SECTION 6: TRUST SECTION
-    ========================================== */
     .trust{
       max-width:1100px;
       margin:50px auto;
@@ -152,9 +131,6 @@
       margin:0;
     }
 
-    /* =========================================
-       SECTION 7: PURCHASE INFO
-    ========================================== */
     .notice{
       background:rgba(25,25,25,0.9);
       max-width:900px;
@@ -178,9 +154,6 @@
       line-height:1.8;
     }
 
-    /* =========================================
-       SECTION 8: PRODUCT TITLE
-    ========================================== */
     .section-title{
       text-align:center;
       margin:40px 20px;
@@ -197,9 +170,6 @@
       margin-bottom:30px;
     }
 
-    /* =========================================
-       SECTION 9: PRODUCT GRID
-    ========================================== */
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -209,19 +179,17 @@
       padding:20px;
     }
 
-    /* =========================================
-       SECTION 10: PRODUCT CARD
-    ========================================== */
     .card{
       background:rgba(25,25,25,0.9);
       border:1px solid #3d3d3d;
       border-radius:4px;
-      padding:20px;
+      padding:20px 20px 0 20px;
       display:flex;
       flex-direction:column;
       backdrop-filter:blur(10px);
       box-shadow:0 20px 40px rgba(0,0,0,0.8);
       transition:transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+      overflow:hidden;
     }
 
     .card:hover{
@@ -229,9 +197,6 @@
       transform:translateY(-5px);
     }
 
-    /* =========================================
-       SECTION 11: IMAGE CAROUSEL
-    ========================================== */
     .carousel{
       position:relative;
       height:200px;
@@ -272,17 +237,9 @@
       z-index:2;
     }
 
-    .carousel .prev{
-      left:8px;
-    }
+    .carousel .prev{ left:8px; }
+    .carousel .next{ right:8px; }
 
-    .carousel .next{
-      right:8px;
-    }
-
-    /* =========================================
-       SECTION 12: LIGHTBOX / ZOOM VIEW
-    ========================================== */
     .lightbox{
       display:none;
       position:fixed;
@@ -319,9 +276,6 @@
       cursor:pointer;
     }
 
-    /* =========================================
-       SECTION 13: STATUS TAGS
-    ========================================== */
     .tag{
       background:var(--orange);
       color:black;
@@ -334,29 +288,16 @@
       text-transform:uppercase;
     }
 
-    .tag.new{
-      background:var(--green);
-      color:white;
-    }
-
     .tag.sold{
       background:#333 !important;
       color:#999 !important;
       border:1px solid #444;
     }
 
-    /* =========================================
-       SECTION 14: PRODUCT TEXT
-    ========================================== */
-    h3{
-      margin:5px 0;
-      color:var(--orange);
-    }
-
     .card h3{
       font-size:1.3rem;
       line-height:1.2;
-      margin-top:10px;
+      margin:10px 0 8px;
       color:var(--white);
     }
 
@@ -367,20 +308,13 @@
       font-weight:normal;
     }
 
-    .price{
-      font-family:'Oswald', sans-serif;
-      color:var(--orange);
-      font-size:26px;
-      font-weight:bold;
-      margin-bottom:10px;
-    }
-
     ul{
       list-style:none;
       padding:0;
-      margin-bottom:15px;
+      margin:0 0 15px;
       font-size:13px;
       color:#ccc;
+      min-height:88px;
     }
 
     li{
@@ -392,48 +326,119 @@
       color:var(--orange);
     }
 
-    /* =========================================
-       SECTION 15: BUTTONS
-    ========================================== */
-    .button-group{
-      display:flex;
-      gap:8px;
+    @keyframes price-glow{
+      0%{
+        text-shadow:0 0 5px rgba(255, 157, 0, 0.2);
+        color:#ff9d00;
+      }
+      50%{
+        text-shadow:0 0 20px rgba(255, 157, 0, 0.8), 0 0 30px rgba(255, 157, 0, 0.4);
+        color:#ffb740;
+      }
+      100%{
+        text-shadow:0 0 5px rgba(255, 157, 0, 0.2);
+        color:#ff9d00;
+      }
+    }
+
+    .action-panel{
+      background:#000;
+      padding:20px;
+      margin:15px -20px 0 -20px;
+      border-top:1px solid var(--orange);
       margin-top:auto;
     }
 
-    .btn{
-      flex:1;
-      text-align:center;
-      background:var(--orange);
-      color:black;
-      text-decoration:none;
-      padding:12px;
+    .action-panel.sold-panel{
+      border-top:1px solid #444;
+    }
+
+    .price-container{
+      margin-bottom:15px;
+      text-align:left;
+    }
+
+    .price-value{
+      font-family:'Oswald', sans-serif;
+      font-size:2.4rem;
+      color:var(--orange);
+      line-height:1;
+      animation:price-glow 3s infinite ease-in-out;
+    }
+
+    .price-value.sold-price{
+      animation:none !important;
+      color:#777 !important;
+      text-shadow:none !important;
+    }
+
+    .action-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .action-btn{
+      font-family:'Oswald', sans-serif;
+      text-transform:uppercase;
       font-weight:bold;
-      border-radius:4px;
-      font-size:14px;
-      border:1px solid transparent;
+      text-decoration:none;
+      text-align:center;
+      padding:14px 5px;
+      font-size:13px;
+      letter-spacing:1px;
+      border-radius:2px;
+      transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .btn:hover{
-      background:white;
+    .buy-btn{
+      background:var(--orange);
+      color:#000;
+      border:1px solid var(--orange);
     }
 
-    .btn.disabled{
+    .buy-btn:hover{
+      background:#fff;
+      border-color:#fff;
+      transform:translateY(-2px);
+      box-shadow:0 0 15px rgba(255,255,255,0.2);
+    }
+
+    .msg-btn{
+      background:transparent;
+      color:#fff;
+      border:1px solid #444;
+    }
+
+    .msg-btn:hover{
+      border-color:var(--orange);
+      color:var(--orange);
+      background:rgba(255,157,0,0.05);
+      transform:translateY(-2px);
+    }
+
+    .action-footer{
+      text-align:center;
+      font-size:10px;
+      color:#444;
+      margin-top:15px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .action-footer.sold-footer{
+      color:#777;
+    }
+
+    .action-btn.disabled{
       background:#222 !important;
       color:#666 !important;
       pointer-events:none;
-      border:1px solid #333;
+      border:1px solid #333 !important;
+      box-shadow:none !important;
+      transform:none !important;
     }
 
-    .btn.disabled:hover{
-      background:#222 !important;
-      color:#666 !important;
-      border:1px solid #333;
-    }
-
-    /* =========================================
-       SECTION 16: CONTACT FORM
-    ========================================== */
     .contact-section{
       max-width:700px;
       margin:40px auto;
@@ -491,9 +496,6 @@
       background:white;
     }
 
-    /* =========================================
-       SECTION 17: FOOTER
-    ========================================== */
     footer{
       background:rgba(26,26,26,0.92);
       margin-top:40px;
@@ -510,38 +512,24 @@
       font-weight:bold;
     }
 
-    /* =========================================
-       SECTION 18: MOBILE
-    ========================================== */
     @media (max-width:640px){
-      .button-group{
-        flex-direction:column;
-      }
-
       .hero h1{
         font-size:28px;
+      }
+
+      .action-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================================
-       SECTION 19: HEADER
-  ========================================== -->
   <header>
-    <img
-      src="https://i.postimg.cc/CKMHbgmD/33a60556_f477_4da1_a492_a7239339ab14.png"
-      class="logo"
-      alt="Core Tech Assist logo"
-    >
+    <img src="https://i.postimg.cc/CKMHbgmD/33a60556_f477_4da1_a492_a7239339ab14.png" class="logo" alt="Core Tech Assist logo">
     <div class="sub-header">Core Tech Marketplace</div>
   </header>
 
-  <!-- =========================================
-       SECTION 20: HERO
-  ========================================== -->
   <section class="hero">
     <h1>Quality Refurbished Tech. Expertly Tested.</h1>
     <p>
@@ -549,34 +537,25 @@
     </p>
   </section>
 
-  <!-- =========================================
-       SECTION 21: TRUST
-  ========================================== -->
   <section class="trust">
     <div class="trust-box">
       <h3>Tested Hardware</h3>
       <p>Every device is tested to ensure it works properly before being listed.</p>
     </div>
-
     <div class="trust-box">
       <h3>Local Tech Support</h3>
       <p>Unlike big marketplaces, you can reach a real technician if you need help.</p>
     </div>
-
     <div class="trust-box">
       <h3>Honest Pricing</h3>
       <p>No inflated prices. Just fair deals on reliable tech.</p>
     </div>
-
     <div class="trust-box">
       <h3>Trusted Business</h3>
       <p>Operated by Core Tech Assist, professional IT support in your community.</p>
     </div>
   </section>
 
-  <!-- =========================================
-       SECTION 22: PURCHASE INFO
-  ========================================== -->
   <section class="notice">
     <h3>Pickup & Payment Details</h3>
     <p>
@@ -588,20 +567,13 @@
     </p>
   </section>
 
-  <!-- =========================================
-       SECTION 23: PRODUCT TITLE
-  ========================================== -->
   <div class="section-title">Available Items</div>
   <p id="update-timer">
     Inventory Last Updated: <span id="last-update-date">Loading...</span>
   </p>
 
-  <!-- =========================================
-       SECTION 24: PRODUCT GRID
-  ========================================== -->
   <div class="grid">
 
-    <!-- PRODUCT 1 -->
     <div class="card" id="product-1">
       <div class="carousel">
         <img src="images/ltp-002-1.jpg" alt="Lenovo Chromebook 100e front view" class="active">
@@ -613,20 +585,24 @@
       <span class="tag">In Stock</span>
       <h3>Lenovo Chromebook 100e 1st Generation | Charger not Included</h3>
       <h4>Condition - Good | Qty: 1</h4>
-      <div class="price">$50.00</div>
       <ul>
         <li>4 GB RAM | 64GB eMMC Storage</li>
         <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
         <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
         <li>11.6 HD Display | Takes USB C 45W Charger</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-002" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$50.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-002" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 2 -->
     <div class="card" id="product-2">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 2 image 1" class="active">
@@ -638,20 +614,24 @@
       <span class="tag">In Stock</span>
       <h3>Lenovo Chromebook 100e 1st Generation | Charger not Included</h3>
       <h4>Condition - Fair | Qty: 1</h4>
-      <div class="price">$40.00</div>
       <ul>
         <li>4 GB RAM | 64GB eMMC Storage</li>
         <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
         <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
         <li>11.6 HD Display | Takes USB C 45W Charger</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-001" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$40.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-001" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%201st%20Generation%20%7C%20Charger%20not%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 3 -->
     <div class="card" id="product-3">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 3 image 1" class="active">
@@ -663,20 +643,24 @@
       <span class="tag">In Stock</span>
       <h3>Lenovo Chromebook 100e 2nd Gen | Charger not Included</h3>
       <h4>Condition - Good | Qty: 1</h4>
-      <div class="price">$60.00</div>
       <ul>
         <li>4 GB LPDDR4 RAM | 64GB eMMC Storage</li>
         <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
         <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
         <li>11.6 HD Display | Takes USB C 45W Charger</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-005" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%202nd%20Gen%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$60.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-005" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%202nd%20Gen%20%7C%20Charger%20not%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 4 -->
     <div class="card" id="product-4">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 4 image 1" class="active">
@@ -688,20 +672,24 @@
       <span class="tag">In Stock</span>
       <h3>Lenovo Chromebook 100e Generation 2 | Charger not Included</h3>
       <h4>Condition - Poor but Fully Functional | Qty: 1</h4>
-      <div class="price">$35.00</div>
       <ul>
         <li>4 GB LPDDR4 RAM | 64GB eMMC Storage</li>
         <li>Intel Celeron N3350 | Dual-Core, 1.1GHz, up to 2.4GHz Turbo</li>
         <li>2x USB 3.0 (Type-C) | 2x USB 3.0 (Type-A) | microSD card reader | combo audio jack | wifi</li>
         <li>11.6 HD Display | Takes USB C 45W Charger</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-004" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%20Generation%202%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$35.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/ltp-004" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Lenovo%20Chromebook%20100e%20Generation%202%20%7C%20Charger%20not%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 5 -->
     <div class="card" id="product-5">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 5 image 1" class="active">
@@ -713,20 +701,24 @@
       <span class="tag">In Stock</span>
       <h3>Rhino T8-2020 | Charger not Included</h3>
       <h4>Condition - Good | Qty: 2</h4>
-      <div class="price">$30.00</div>
       <ul>
         <li>2GB/3GB RAM | 32 GB</li>
         <li>Android 10 | Global LTE Wifi</li>
         <li>8in Display | MicroSD | Nano Sim</li>
         <li>Takes USB C Charger</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/TAB-001" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Rhino%20T8-2020%20%7C%20Charger%20not%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$30.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/TAB-001" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Rhino%20T8-2020%20%7C%20Charger%20not%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 6 -->
     <div class="card" id="product-6">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 6 image 1" class="active">
@@ -738,19 +730,23 @@
       <span class="tag">In Stock</span>
       <h3>Google Pixel Watch Generation 1 | Charger Included</h3>
       <h4>Condition - Good | Qty: 1</h4>
-      <div class="price">$35.00</div>
       <ul>
         <li>2 GB SDRAM | 32 GB eMMC flash storage</li>
         <li>Samsung Exynos 9110 SoC paired with a Cortex M33 co-processor</li>
         <li>41mm diameter | 12.3mm thick</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-001" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Google%20Pixel%20Watch%20Generation%201%20%7C%20Charger%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$35.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-001" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Google%20Pixel%20Watch%20Generation%201%20%7C%20Charger%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 7 -->
     <div class="card" id="product-7">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 7 image 1" class="active">
@@ -762,19 +758,23 @@
       <span class="tag">In Stock</span>
       <h3>Smart Audio Sunglasses Hyundai HY-C2 | Charger Included</h3>
       <h4>Condition - New | Qty: 1</h4>
-      <div class="price">$50.00</div>
       <ul>
         <li>Bluetooth 5.4</li>
         <li>AI Translation</li>
         <li>AI Integration</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-002" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Smart%20Audio%20Sunglasses%20Hyundai%20HY-C2%20%7C%20Charger%20Included" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$50.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/wrb-002" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Smart%20Audio%20Sunglasses%20Hyundai%20HY-C2%20%7C%20Charger%20Included" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 8 -->
     <div class="card" id="product-8">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 8 image 1" class="active">
@@ -786,19 +786,23 @@
       <span class="tag">In Stock</span>
       <h3>Product Name 8</h3>
       <h4>Condition - Add Here | Qty: 1</h4>
-      <div class="price">$0.00</div>
       <ul>
         <li>Spec 1</li>
         <li>Spec 2</li>
         <li>Spec 3</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%208" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$0.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%208" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 9 -->
     <div class="card" id="product-9">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 9 image 1" class="active">
@@ -810,19 +814,23 @@
       <span class="tag">In Stock</span>
       <h3>Product Name 9</h3>
       <h4>Condition - Add Here | Qty: 1</h4>
-      <div class="price">$0.00</div>
       <ul>
         <li>Spec 1</li>
         <li>Spec 2</li>
         <li>Spec 3</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%209" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$0.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%209" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
-    <!-- PRODUCT 10 -->
     <div class="card" id="product-10">
       <div class="carousel">
         <img src="images/placeholder.jpg" alt="Product 10 image 1" class="active">
@@ -834,28 +842,29 @@
       <span class="tag">In Stock</span>
       <h3>Product Name 10</h3>
       <h4>Condition - Add Here | Qty: 1</h4>
-      <div class="price">$0.00</div>
       <ul>
         <li>Spec 1</li>
         <li>Spec 2</li>
         <li>Spec 3</li>
       </ul>
-      <div class="button-group">
-        <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="btn">Buy Now</a>
-        <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%2010" class="btn">Message to Buy</a>
+      <div class="action-panel">
+        <div class="price-container">
+          <div class="price-value">$0.00</div>
+        </div>
+        <div class="action-grid">
+          <a href="https://e75095ea-6dab-4656-be9b-825a47299d44.paylinks.godaddy.com/44f267f8-1370-4888-99f8-f48" class="action-btn buy-btn">Buy Now</a>
+          <a href="https://m.me/61586397940488?text=Hi%2C%20I%27m%20interested%20in%20Product%20Name%2010" class="action-btn msg-btn">Message</a>
+        </div>
+        <div class="action-footer">Secure Encrypted Checkout</div>
       </div>
     </div>
 
   </div>
 
-  <!-- =========================================
-       SECTION 25: CONTACT FORM
-  ========================================== -->
   <section class="contact-section">
     <div class="form-card">
       <h2>Purchase Inquiry</h2>
       <p>Ask about an item.</p>
-
       <form action="https://formspree.io/f/xeeeqkew" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -866,9 +875,6 @@
     </div>
   </section>
 
-  <!-- =========================================
-       SECTION 26: FOOTER
-  ========================================== -->
   <footer>
     Ryan Elijah Williams-Gutierrez | Founder & IT Professional<br>
     <span class="footer-accent">Core Tech Assist</span><br>
@@ -879,17 +885,11 @@
     AS & BS in Information Technology
   </footer>
 
-  <!-- =========================================
-       SECTION 27: LIGHTBOX HTML
-  ========================================== -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" type="button" onclick="closeLightbox(); event.stopPropagation();">&times;</button>
     <img id="lightbox-image" src="" alt="Expanded product image">
   </div>
 
-  <!-- =========================================
-       SECTION 28: CAROUSEL + LIGHTBOX SCRIPT
-  ========================================== -->
   <script>
     document.querySelectorAll(".carousel").forEach(function(carousel){
       const images = carousel.querySelectorAll("img");
@@ -945,9 +945,6 @@
     });
   </script>
 
-  <!-- =========================================
-       SECTION 29: MASTER INVENTORY LIST
-  ========================================== -->
   <script>
     const myInventory = {
       "product-1": "in-stock",
@@ -959,7 +956,7 @@
       "product-7": "in-stock",
       "product-8": "in-stock",
       "product-9": "in-stock",
-      "product-10": "in-stock"
+      "product-10": "sold-out"
     };
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -969,7 +966,10 @@
 
         const status = myInventory[id];
         const tag = card.querySelector(".tag");
-        const buttons = card.querySelectorAll(".btn");
+        const buttons = card.querySelectorAll(".action-btn");
+        const price = card.querySelector(".price-value");
+        const panel = card.querySelector(".action-panel");
+        const footer = card.querySelector(".action-footer");
 
         if (!tag) return;
 
@@ -978,6 +978,19 @@
         if (status === "sold" || status === "sold-out") {
           tag.className = "tag sold";
           tag.textContent = status === "sold" ? "Sold" : "Sold Out";
+
+          if (price) {
+            price.classList.add("sold-price");
+          }
+
+          if (panel) {
+            panel.classList.add("sold-panel");
+          }
+
+          if (footer) {
+            footer.classList.add("sold-footer");
+            footer.textContent = "Item No Longer Available";
+          }
 
           buttons.forEach((btn) => {
             btn.classList.add("disabled");
@@ -990,15 +1003,28 @@
           tag.className = "tag";
           tag.textContent = "In Stock";
 
-          buttons.forEach((btn, index) => {
-            btn.classList.remove("disabled");
+          if (price) {
+            price.classList.remove("sold-price");
+          }
 
-            if (index === 0) {
-              btn.textContent = "Buy Now";
-            } else {
-              btn.textContent = "Message to Buy";
-            }
+          if (panel) {
+            panel.classList.remove("sold-panel");
+          }
+
+          if (footer) {
+            footer.classList.remove("sold-footer");
+            footer.textContent = "Secure Encrypted Checkout";
+          }
+
+          buttons.forEach((btn) => {
+            btn.classList.remove("disabled");
           });
+
+          const buyBtn = card.querySelector(".buy-btn");
+          const msgBtn = card.querySelector(".msg-btn");
+
+          if (buyBtn) buyBtn.textContent = "Buy Now";
+          if (msgBtn) msgBtn.textContent = "Message";
         }
       });
 
@@ -1014,6 +1040,6 @@
       document.getElementById("last-update-date").textContent = updateDateTime;
     });
   </script>
-
 </body>
 </html>
+```
