@@ -26,7 +26,10 @@
     }
 
     body{
+      margin:0;
       font-family:'Inter', sans-serif;
+      color:var(--white);
+      letter-spacing:0.5px;
       background-color:var(--black);
       background-image:
         linear-gradient(115deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(255,255,255,0.03) 100%),
@@ -37,9 +40,6 @@
       background-size:100% 100%, 14px 14px;
       background-position:0 0, 0 0, 0 7px, 7px 7px, 7px 0;
       background-attachment:fixed;
-      margin:0;
-      color:var(--white);
-      letter-spacing:0.5px;
       position:relative;
     }
 
@@ -55,14 +55,13 @@
       z-index:-1;
     }
 
-    h1, h2, h3, .sub-header, .section-title, .terminal-status, .terminal-title{
+    h1, h2, h3, .section-title, .terminal-status, .terminal-title{
       font-family:'Oswald', sans-serif;
       text-transform:uppercase;
       letter-spacing:1.5px;
       font-weight:700;
     }
 
-    /* Tactical Header */
     header{
       padding:80px 20px 40px;
       text-align:center;
@@ -106,7 +105,7 @@
     .hero h1{
       font-size:36px;
       margin-bottom:15px;
-      color:white;
+      color:#fff;
     }
 
     .hero p{
@@ -175,7 +174,6 @@
       margin:40px 20px;
       font-size:24px;
       color:var(--orange);
-      font-weight:bold;
     }
 
     #update-timer{
@@ -250,13 +248,49 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      display:block;
+      display:none;
       opacity:0.95;
       transition:transform 0.35s ease;
     }
 
-    .card:hover .image-container img{
+    .image-container img.active{
+      display:block;
+    }
+
+    .card:hover .image-container img.active{
       transform:scale(1.03);
+    }
+
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:34px;
+      height:34px;
+      border:none;
+      border-radius:50%;
+      background:rgba(0,0,0,0.7);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:0.2s ease;
+    }
+
+    .carousel-btn:hover{
+      background:rgba(255,157,0,0.9);
+      color:#000;
+    }
+
+    .carousel-btn.prev{
+      left:8px;
+    }
+
+    .carousel-btn.next{
+      right:8px;
     }
 
     .spec-panel{
@@ -454,7 +488,6 @@
       transform:none !important;
     }
 
-    /* Terminal Contact Section */
     .contact-terminal{
       max-width:800px;
       margin:100px auto;
@@ -609,7 +642,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <img src="https://i.postimg.cc/KjKxV1wY/ecb986ef-f3a9-4606-be9d-0ec89210eb44.png" class="main-logo" alt="Core Tech Assist">
@@ -663,7 +695,11 @@
     <div class="card" id="product-1">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/ltp-002-1.jpg" alt="Lenovo Chromebook 100e">
+        <img src="images/ltp-002-1.jpg" alt="Lenovo Chromebook 100e image 1" class="active">
+        <img src="images/ltp-002-2.jpg" alt="Lenovo Chromebook 100e image 2">
+        <img src="images/ltp-002-3.jpg" alt="Lenovo Chromebook 100e image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -687,7 +723,11 @@
     <div class="card" id="product-2">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e fair condition image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e fair condition image 2">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e fair condition image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -711,7 +751,11 @@
     <div class="card" id="product-3">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e 2nd Gen">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e 2nd Gen image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e 2nd Gen image 2">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e 2nd Gen image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -735,7 +779,11 @@
     <div class="card" id="product-4">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e Generation 2">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e Generation 2 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e Generation 2 image 2">
+        <img src="images/placeholder.jpg" alt="Lenovo Chromebook 100e Generation 2 image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Intel N3350</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">4GB / 64GB</span></div>
@@ -759,7 +807,11 @@
     <div class="card" id="product-5">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Rhino T8-2020 Tablet">
+        <img src="images/placeholder.jpg" alt="Rhino T8-2020 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Rhino T8-2020 image 2">
+        <img src="images/placeholder.jpg" alt="Rhino T8-2020 image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Processor</span><span class="spec-val">Android 10</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">2GB / 32GB</span></div>
@@ -783,7 +835,11 @@
     <div class="card" id="product-6">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Google Pixel Watch">
+        <img src="images/placeholder.jpg" alt="Google Pixel Watch image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Google Pixel Watch image 2">
+        <img src="images/placeholder.jpg" alt="Google Pixel Watch image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Chip</span><span class="spec-val">Exynos 9110</span></div>
           <div class="spec-row"><span class="spec-lbl">RAM/Storage</span><span class="spec-val">2GB / 32GB</span></div>
@@ -807,7 +863,11 @@
     <div class="card" id="product-7">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Smart Audio Sunglasses">
+        <img src="images/placeholder.jpg" alt="Smart Audio Sunglasses image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Smart Audio Sunglasses image 2">
+        <img src="images/placeholder.jpg" alt="Smart Audio Sunglasses image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Bluetooth</span><span class="spec-val">5.4</span></div>
           <div class="spec-row"><span class="spec-lbl">Features</span><span class="spec-val">AI Translation</span></div>
@@ -831,7 +891,11 @@
     <div class="card" id="product-8">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Product 8">
+        <img src="images/placeholder.jpg" alt="Product 8 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 8 image 2">
+        <img src="images/placeholder.jpg" alt="Product 8 image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -855,7 +919,11 @@
     <div class="card" id="product-9">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Product 9">
+        <img src="images/placeholder.jpg" alt="Product 9 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 9 image 2">
+        <img src="images/placeholder.jpg" alt="Product 9 image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -879,7 +947,11 @@
     <div class="card" id="product-10">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/placeholder.jpg" alt="Product 10">
+        <img src="images/placeholder.jpg" alt="Product 10 image 1" class="active">
+        <img src="images/placeholder.jpg" alt="Product 10 image 2">
+        <img src="images/placeholder.jpg" alt="Product 10 image 3">
+        <button class="carousel-btn prev" type="button">&#8249;</button>
+        <button class="carousel-btn next" type="button">&#8250;</button>
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -946,6 +1018,36 @@
       "product-9": "in-stock",
       "product-10": "in-stock"
     };
+
+    document.querySelectorAll(".image-container").forEach(function(container){
+      const images = container.querySelectorAll("img");
+      const prevBtn = container.querySelector(".prev");
+      const nextBtn = container.querySelector(".next");
+
+      if (!images.length || !prevBtn || !nextBtn) return;
+
+      let currentIndex = 0;
+
+      function showImage(index){
+        images.forEach((img, i) => {
+          img.classList.toggle("active", i === index);
+        });
+      }
+
+      prevBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      showImage(currentIndex);
+    });
 
     document.addEventListener("DOMContentLoaded", () => {
       Object.keys(myInventory).forEach(id => {
