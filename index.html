@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+export default {
+  async fetch(request, env, ctx) {
+    const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -931,7 +933,7 @@
     <div class="card" id="product-8">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/product-8-collage.jpg" alt="Product 8 multi-view collage">
+        <img src="https://i.postimg.cc/Y9wHKq53/a8e2350c_ae09_4458_9679_2fcadab91080.png" alt="Product 8 image">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -955,7 +957,7 @@
     <div class="card" id="product-9">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/product-9-collage.jpg" alt="Product 9 multi-view collage">
+        <img src="https://i.postimg.cc/Y9wHKq53/a8e2350c_ae09_4458_9679_2fcadab91080.png" alt="Product 9 image">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -979,7 +981,7 @@
     <div class="card" id="product-10">
       <span class="tag">In Stock</span>
       <div class="image-container">
-        <img src="images/product-10-collage.jpg" alt="Product 10 multi-view collage">
+        <img src="https://i.postimg.cc/Y9wHKq53/a8e2350c_ae09_4458_9679_2fcadab91080.png" alt="Product 10 image">
         <div class="spec-panel">
           <div class="spec-row"><span class="spec-lbl">Spec 1</span><span class="spec-val">Add Here</span></div>
           <div class="spec-row"><span class="spec-lbl">Spec 2</span><span class="spec-val">Add Here</span></div>
@@ -1152,4 +1154,10 @@
     });
   </script>
 </body>
-</html>
+</html>`;
+
+    return new Response(html, { 
+      headers: { "content-type": "text/html;charset=UTF-8" } 
+    });
+  },
+};
